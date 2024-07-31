@@ -1,5 +1,6 @@
-import { conversionRates } from "../../utils/types";
-
 export interface ProductCardProps {
-  conversion_rates: conversionRates
+  conversion_rates: {
+    key: string
+    value: number
+  }
 }

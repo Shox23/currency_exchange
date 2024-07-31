@@ -2,10 +2,10 @@ import { getLatestResponse } from "../../../utils/types";
 import { api } from "../../instance";
 
 export interface GetLatestParams {
-  id: string;
+  base_code: string;
 }
 
-export type GetLatestConfig = AxiosRequestConfig<GetLatestParams>;
+// export type GetLatestConfig = AxiosRequestConfig<GetLatestParams>;
 
-export const getLatest = async ({params, config}: GetLatestConfig) =>
-  api.get<getLatestResponse>(`/latest/${params.id}`, config);
+export const getLatest = async (params: GetLatestParams) =>
+  api.get<getLatestResponse>(`/latest/${params.base_code}`);

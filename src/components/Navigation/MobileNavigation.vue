@@ -4,7 +4,7 @@
   >
     <div
       ref="indicatorParent"
-      class="flex relative overflow-hidden items-center w-max duration-300 ease-in-out gap-2 bg-glass backdrop-blur-xl p-2 rounded-[40px]"
+      class="flex relative overflow-hidden items-center w-max duration-300 ease-in-out gap-2 bg-glass backdrop-blur-md p-2 rounded-[40px]"
     >
       <div
         v-for="(item, idx) in menuItems"
