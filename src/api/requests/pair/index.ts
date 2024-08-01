@@ -1,4 +1,4 @@
-import { getLatestResponse } from "../../../utils/types";
+import { getPairResponse } from "../../../utils/types";
 import { api } from "../../instance";
 
 export interface GetPairParams {
@@ -9,7 +9,7 @@ export interface GetPairParams {
 
 export type GetPairConfig = AxiosRequestConfig<GetPairParams>;
 
-export const getPairCurrency = async ({ params }: GetPairConfig) =>
-  api.get<getLatestResponse>(
+export const getPairCurrency = ({ params }: GetPairConfig) =>
+  api.get<getPairResponse>(
     `/pair/${params.base_code}/${params.target_code}/${params.amount}`
   );

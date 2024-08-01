@@ -24,6 +24,7 @@ import {
   getLatestData,
   latestData,
   latestDataLoading,
+  requestSupportedCodes,
 } from "../utils/currency";
 import ProductCardSkeleton from "../components/ProductCard/ProductCardSkeleton.vue";
 
@@ -35,6 +36,7 @@ watch(
 );
 
 onMounted(() => {
+  requestSupportedCodes()
   getLatestData();
 });
 </script>

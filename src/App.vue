@@ -32,5 +32,6 @@ onMounted(() => {
         document.documentElement.setAttribute("data-theme", newColorScheme);
       }
     });
+
 });
 </script>

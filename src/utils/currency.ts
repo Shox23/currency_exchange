@@ -1,11 +1,23 @@
 import { Ref, ref } from "vue";
 import { getLatest } from "../api/requests/latest";
 import { getLatestResponse } from "./types";
+import { getPairCurrency, GetPairParams } from "../api/requests/pair";
+import { getSupportedCodes } from "../api/requests/codes";
 
 export const base_code: Ref<string> = ref<string>(
   localStorage.base_code ? localStorage.base_code : "USD"
 );
+
+export const supportedCodes: Ref<Array<string[]> | undefined> = ref<
+  Array<string[]> | undefined
+>(
+  localStorage.supported_codes
+    ? JSON.parse(localStorage.supported_codes)
+    : undefined
+);
+
 export const latestDataLoading: Ref<boolean> = ref<boolean>(false);
+
 export const latestData: Ref<getLatestResponse | undefined> = ref<
   getLatestResponse | undefined
 >(localStorage.latest_data ? JSON.parse(localStorage.latest_data) : undefined);
@@ -39,4 +51,22 @@ export const requestGetLatestData = async () => {
     latestData.value = data.status;
   }
   latestDataLoading.value = false;
+};
+
+export const requestConvertData = async (requestData: GetPairParams) => {
+  const data = await getPairCurrency({ params: requestData });
+  console.log(data);
+  if (data.data) {
+    return data.data;
+  }
+};
+
+export const requestSupportedCodes = async () => {
+  if (supportedCodes.value === undefined) {
+    const data = await getSupportedCodes();
+    if (data.data) {
+      supportedCodes.value = data.data.supported_codes;
+      localStorage.supported_codes = JSON.stringify(data.data.supported_codes);
+    }
+  }
 };

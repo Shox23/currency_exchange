@@ -7,5 +7,5 @@ export interface GetLatestParams {
 
 // export type GetLatestConfig = AxiosRequestConfig<GetLatestParams>;
 
-export const getLatest = async (params: GetLatestParams) =>
+export const getLatest = (params: GetLatestParams) =>
   api.get<getLatestResponse>(`/latest/${params.base_code}`);
