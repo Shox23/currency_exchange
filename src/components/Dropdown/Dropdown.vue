@@ -27,6 +27,7 @@
 <script lang="ts" setup>
 import { Ref, ref } from "vue";
 import { base_code, setCurrentBaseCode } from "../../utils/currency";
+import { afterEnter, enter, leave } from "../../utils/animations";
 
 const isOpen: Ref<boolean> = ref<boolean>(false);
 const list: string[] = [
@@ -196,30 +197,6 @@ const list: string[] = [
 
 const setCurrentCode = (code: string) => {
   setCurrentBaseCode(code);
-};
-
-const enter = (element: Element) => {
-  const el = element as HTMLElement;
-  el.style.height = "auto";
-  const height = getComputedStyle(el).height;
-  el.style.height = "0";
-  getComputedStyle(el);
-  setTimeout(() => {
-    el.style.height = height;
-  });
-};
-
-const afterEnter = (element: Element) => {
-  const el = element as HTMLElement;
-  el.style.height = "auto";
-};
-
-const leave = (element: Element) => {
-  const el = element as HTMLElement;
-  el.style.height = getComputedStyle(el).height;
-  getComputedStyle(el);
-  setTimeout(() => {
-    el.style.height = "0";
-  });
+  isOpen.value = false
 };
 </script>

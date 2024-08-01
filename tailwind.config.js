@@ -6,6 +6,9 @@ export default {
       backgroundColor: {
         glass: "rgba(255, 255, 255, 0.11)",
       },
+      colors: {
+        dark: "#0a0a0a",
+      },
     },
   },
   plugins: [],
