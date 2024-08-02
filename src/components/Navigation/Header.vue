@@ -13,7 +13,6 @@
         </RouterLink>
       </div>
       <div class="flex items-center gap-2">
-        <div><Dropdown /></div>
         <div><ModeSwitcher /></div>
       </div>
     </div>
@@ -25,7 +24,6 @@
 import ModeSwitcher from "../ModeSwitcher/Switcher.vue";
 import { RouterLink } from "vue-router";
 import { useScreen } from "../../utils/screen";
-import Dropdown from "../Dropdown/Dropdown.vue";
 import { currentTheme } from "../../utils/theme";
 
 const { isMobile } = useScreen();

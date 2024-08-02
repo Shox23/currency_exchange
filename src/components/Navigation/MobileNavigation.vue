@@ -36,12 +36,14 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, Ref, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { currentTheme } from "../../utils/theme";
+import { useRoute } from "vue-router";
 
+const activeItem = ref<number>(0);
 const indicator = ref<HTMLDivElement | null>(null);
 const indicatorParent = ref<HTMLDivElement | null>(null);
-const activeItem: Ref<number> = ref<number>(0);
+const route = useRoute();
 const menuItems = [
   {
     link: "/",
@@ -71,6 +73,16 @@ const setIndicatorPosition = (newVal: number) => {
     }
   }
 };
+
+watch(
+  () => route.fullPath,
+  () => {
+    if (route.fullPath !== "/") {
+      activeItem.value = 1;
+    }
+    setIndicatorPosition(activeItem.value);
+  }
+);
 
 onMounted(() => {
   setIndicatorPosition(activeItem.value);

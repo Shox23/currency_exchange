@@ -3,4 +3,5 @@ export interface CustomInputProps {
   list?: boolean;
   type: "text" | "number";
   inputMode?: boolean;
+  modelType: string | number;
 }

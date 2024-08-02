@@ -8,12 +8,8 @@ export const base_code: Ref<string> = ref<string>(
   localStorage.base_code ? localStorage.base_code : "USD"
 );
 
-export const supportedCodes: Ref<Array<string[]> | undefined> = ref<
-  Array<string[]> | undefined
->(
-  localStorage.supported_codes
-    ? JSON.parse(localStorage.supported_codes)
-    : undefined
+export const supportedCodes: Ref<Array<string[]>> = ref<Array<string[]>>(
+  localStorage.supported_codes ? JSON.parse(localStorage.supported_codes) : []
 );
 
 export const latestDataLoading: Ref<boolean> = ref<boolean>(false);

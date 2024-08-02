@@ -5,18 +5,21 @@
       <form class="flex flex-col gap-2 mt-3" @submit.prevent="sendRequest">
         <CustomInput
           v-model="currencyFromConverte"
+          model-type="string"
           type="text"
           :list="true"
           placeholder="From"
         />
         <CustomInput
           v-model="currencyToConverte"
+          model-type="string"
           type="text"
           :list="true"
           placeholder="To"
         />
         <CustomInput
           v-model="currencyAmount"
+          model-type="number"
           type="number"
           placeholder="Amount"
         />
@@ -60,16 +63,44 @@ const responseData = ref<getPairResponse | null>(null);
 
 const sendRequest = async () => {
   if (
-    currencyAmount.value &&
-    currencyFromConverte.value &&
-    currencyToConverte.value
+    !currencyAmount.value &&
+    !currencyFromConverte.value &&
+    !currencyToConverte.value
   ) {
-    const data: GetPairParams = {
-      amount: currencyAmount.value,
-      base_code: currencyFromConverte.value,
-      target_code: currencyToConverte.value,
-    };
-    responseData.value = await requestConvertData(data);
+    if (!currencyAmount.value) {
+      alert("Amount input should not be empty");
+      return;
+    }
+    if (!currencyToConverte.value) {
+      alert("Input currency to convert");
+      return;
+    }
+    if (!currencyFromConverte.value) {
+      alert("Input currency convert from");
+      return;
+    }
+  } else {
+    if (
+      currencyAmount.value &&
+      currencyFromConverte.value.length === 3 &&
+      currencyToConverte.value.length === 3
+    ) {
+      const data: GetPairParams = {
+        amount: currencyAmount.value,
+        base_code: currencyFromConverte.value.toUpperCase(),
+        target_code: currencyToConverte.value.toUpperCase(),
+      };
+      responseData.value = await requestConvertData(data);
+    } else {
+      if (currencyToConverte.value.length !== 3) {
+        alert("Invalid Currency to convert");
+        return;
+      }
+      if (currencyFromConverte.value.length !== 3) {
+        alert("Invalid currency convert from");
+        return;
+      }
+    }
   }
 };
 </script>

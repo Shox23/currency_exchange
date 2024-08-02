@@ -49,6 +49,16 @@ body {
   margin: 0 auto;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 @keyframes gradient {
   0% {
     background-position: 0% 50%;

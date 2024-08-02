@@ -1,5 +1,9 @@
 <template>
   <div class="container">
+    <div class="mb-4">
+      <h2 class="text-2xl font-bold">Current currency:</h2>
+      <Dropdown />
+    </div>
     <div
       class="flex flex-col gap-2 max-h-svh overflow-auto"
       v-if="latestData && !latestDataLoading"
@@ -27,6 +31,7 @@ import {
   requestSupportedCodes,
 } from "../utils/currency";
 import ProductCardSkeleton from "../components/ProductCard/ProductCardSkeleton.vue";
+import Dropdown from "../components/Dropdown/Dropdown.vue";
 
 watch(
   () => base_code.value,
@@ -36,7 +41,7 @@ watch(
 );
 
 onMounted(() => {
-  requestSupportedCodes()
+  requestSupportedCodes();
   getLatestData();
 });
 </script>
