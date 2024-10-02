@@ -4,14 +4,11 @@
     <div>
       <slot />
     </div>
-    <MobileNavigation v-if="isMobile" />
+    <MobileNavigation />
   </div>
 </template>
 
 <script setup lang="ts">
 import Header from "../Navigation/Header.vue";
 import MobileNavigation from "../Navigation/MobileNavigation.vue";
-import { useScreen } from "../../utils/screen";
-
-const { isMobile } = useScreen();
 </script>
