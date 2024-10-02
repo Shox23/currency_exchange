@@ -54,7 +54,7 @@ import CustomInput from "../components/CustomInput/CustomInput.vue";
 import { afterEnter, enter, leave } from "../utils/animations";
 import { GetPairParams } from "../api/requests/pair";
 import { requestConvertData } from "../utils/currency";
-import { getPairResponse } from "../utils/types";
+import { getPairResponse } from "../types";
 
 const currencyFromConverte = ref<string>("");
 const currencyToConverte = ref<string>("");

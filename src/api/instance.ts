@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API_KEY:string = '874fca92ac7ca54c8846a25a'
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 export const api = axios.create({
-  baseURL: `https://v6.exchangerate-api.com/v6/${API_KEY}`
-})
+  baseURL: `https://v6.exchangerate-api.com/v6/${API_KEY}`,
+});

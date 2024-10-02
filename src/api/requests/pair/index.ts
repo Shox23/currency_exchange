@@ -1,4 +1,4 @@
-import { getPairResponse } from "../../../utils/types";
+import { getPairResponse } from "../../../types";
 import { api } from "../../instance";
 
 export interface GetPairParams {

@@ -1,4 +1,4 @@
-import { getLatestResponse } from "../../../utils/types";
+import { getLatestResponse } from "../../../types";
 import { api } from "../../instance";
 
 export interface GetLatestParams {

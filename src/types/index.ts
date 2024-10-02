@@ -11,10 +11,10 @@ export interface getLatestResponse {
 }
 
 export interface getCodesResponse {
-  result:string,
-	documentation:string,
-	terms_of_use:string
-	supported_codes: Array<string[]>
+  result: string;
+  documentation: string;
+  terms_of_use: string;
+  supported_codes: Array<string[]>;
 }
 
 export interface getPairResponse {

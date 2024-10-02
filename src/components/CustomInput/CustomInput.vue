@@ -54,9 +54,8 @@ const filteredList = ref<Array<string[]>>(supportedCodes.value);
 const filterItems = () => {
   if (supportedCodes.value) {
     filteredList.value = supportedCodes.value.filter((item) =>
-      item[0].toLocaleLowerCase().includes(model.value.toLocaleLowerCase())
+      item[0].toLowerCase().includes(model.value.toLowerCase())
     );
-    // console.log(filteredList.value);
   }
 };
 

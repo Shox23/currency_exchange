@@ -1,6 +1,6 @@
 import { Ref, ref } from "vue";
 import { getLatest } from "../api/requests/latest";
-import { getLatestResponse } from "./types";
+import { getLatestResponse } from "../types";
 import { getPairCurrency, GetPairParams } from "../api/requests/pair";
 import { getSupportedCodes } from "../api/requests/codes";
 
@@ -39,7 +39,6 @@ export const getLatestData = () => {
 export const requestGetLatestData = async () => {
   latestDataLoading.value = true;
   const data = await getLatest({ base_code: base_code.value });
-  console.log("REQUEST SENT");
   if (data.data) {
     latestData.value = data.data;
     localStorage.latest_data = JSON.stringify(data.data);
@@ -51,7 +50,6 @@ export const requestGetLatestData = async () => {
 
 export const requestConvertData = async (requestData: GetPairParams) => {
   const data = await getPairCurrency({ params: requestData });
-  console.log(data);
   if (data.data) {
     return data.data;
   }
